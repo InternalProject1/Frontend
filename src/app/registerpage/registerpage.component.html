@@ -1,18 +1,53 @@
-<div >
-    <form>
-   <div class="mb-3">
-     <label for="exampleInputEmail1" class="form-label">Email address</label>
-     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-     <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-   </div>
-   <div class="mb-3">
-     <label for="exampleInputPassword1" class="form-label">Password</label>
-     <input type="password" class="form-control" id="exampleInputPassword1">
-   </div>
-   <div class="mb-3 form-check">
-     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-     <label class="form-check-label" for="exampleCheck1">Check me out</label>
-   </div>
-   <button type="submit" class="btn btn-primary">Submit</button>
- </form>
- </div>
+<div  style="height:100vh;background-color: rgb(225, 235, 236);" class="d-flex flex-column justify-content-center align-items-center ">  
+  <div  class="d-flex flex-column justify-content-center align-items-center p-3 shadow" style="background-color:white;border-radius:10px;">
+      <div class="mb-3"><h1 class="text-center">Create Account</h1></div>
+      <form #registerForm="ngForm" >
+      <div class="mb-3 d-flex flex-row justify-content-between">
+          <div class="mr-2">
+          <label for="Inputfname1" class="form-label">First name</label>
+          <input type="text" class="form-control" placeholder="Firstname" id="Inputfname11" name="fname"  #fname="ngModel" ngModel required="">
+          <small class="text-danger"  *ngIf="fname.invalid && fname.touched">Firstname Required</small>
+ 
+ 
+        </div>
+          <div>
+              <label for="Inputlname1" class="form-label">Last name</label>
+              <input type="text" class="form-control" id="Inputlname11" placeholder="Lastname" name="lname" #lname="ngModel"  ngModel required="" >
+              <small class="text-danger"  *ngIf="lname.invalid && lname.touched">Lastname Required</small>
+          </div>
+      </div>  
+     <div class="mb-3 ">
+       <label for="exampleInputEmail1" class="form-label">Email address</label>
+       <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email" aria-describedby="emailHelp" name="email"  #email="ngModel"  ngModel required="">
+       <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+       <small class="text-danger"  *ngIf="email.invalid && email.touched">Email Required</small>
+     </div>
+     <div class="mb-3">
+      <label for="InputUname1" class="form-label">Username</label>
+      <input type="text" class="form-control" id="InputUname1" placeholder="Username" name="user"  #user="ngModel" ngModel required="">
+      <small class="text-danger"  *ngIf="user.invalid && user.touched">Username Required</small>
+    </div>
+     <div class="mb-3">
+       <label for="exampleInputPassword1" class="form-label">Password</label>
+       <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}" name="Password"   #password="ngModel" ngModel  required="">
+       <small class="text-danger"  *ngIf="password.errors?.['required'] && password.touched">Password is Required</small>
+       <small class="text-danger"  *ngIf="password.errors?.['pattern'] && password.touched">Password should have atleast one uppercase letter, one lowercase</small>
+       <br>
+       <small class="text-danger"  *ngIf="password.errors?.['pattern'] && password.touched"> letter,one special Character,one number and atleast length of 8</small>
+     </div>
+     <div class="mb-3">
+      <label for="InputRetypePassword1" class="form-label">Confirm Password</label>
+      
+      <input type="password" class="form-control" id="InputRetypePassword1"    placeholder="confirmPassword"  name="confirmPassword"   #confirmPassword="ngModel" ngModel required="">
+       
+      <small class="text-danger"  *ngIf="confirmPassword.touched && confirmPassword.value!=password.value">Password does not match</small>
+    </div >
+
+    
+    
+     <div class="d-flex flex-column "><button type="submit" [disabled]="registerForm.form.invalid || confirmPassword.value!=password.value" class="btn btn-primary mb-2">Register</button>
+      <a style="text-decoration:none;" routerLink="/login">Already have an account? Signin</a></div>
+     
+      </form>
+    </div>
+  </div>

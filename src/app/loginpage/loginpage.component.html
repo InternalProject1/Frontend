@@ -1,0 +1,23 @@
+<div style="height:100vh;background-color: rgb(225, 235, 236);"   class="d-flex flex-column justify-content-center align-items-center ">
+   <div class="shadow p-3 "  style="border-radius:10px;background-color:rgba(255, 255, 255, 0.925);">
+     <div class="mb-3"><h1 class="text-center">Login</h1></div>
+<form #loginForm="ngForm" >
+    <div class="mb-3">
+      <label for="userName" class="form-label">Username</label>
+      <input type="text" class="form-control" name="user" #userLogin="ngModel" id="userName" required="" ngModel>
+      <small class="text-danger"  *ngIf="userLogin.invalid && userLogin.touched">Username Required</small>
+    </div>
+    <div class="mb-3">
+      <label for="loginPassword" class="form-label">Password</label>
+      <input type="password" class="form-control" name="login" #userPassword="ngModel" id="loginPassword" required="" ngModel>
+      <small class="text-danger"  *ngIf="userPassword.invalid && userPassword.touched">Password Required</small>
+    </div>
+    <div class="d-flex flex-column">
+        <button type="submit" [disabled]="loginForm.form.invalid" class="btn btn-primary mb-2">Login</button>
+        <a style="text-decoration:none;" routerLink="/Register">New User?Signup</a>
+        </div>
+    
+    
+  </form>
+</div>
+</div>
