@@ -7,6 +7,8 @@ import { RegisterpageComponent } from './registerpage/registerpage.component';
 import { FormsModule } from '@angular/forms';
 import { LoginpageComponent } from './loginpage/loginpage.component';
 import { DeviceViewModule } from './device-view/device-view.module';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 @NgModule({
@@ -17,13 +19,16 @@ import { DeviceViewModule } from './device-view/device-view.module';
     
     
     
+    
    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    DeviceViewModule
+    DeviceViewModule,
+    HttpClientModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent]
